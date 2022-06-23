@@ -1,0 +1,82 @@
+{
+  "name": "process-data-attr-as-func",
+  "description": "process data attr as func",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "./dist/process-data-attr-as-func/process-data-attr-as-func.js",
+  "exports": {
+    ".": "./dist/process-data-attr-as-func/process-data-attr-as-func.js"
+  },
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/process-data-attr-as-func/index.d.ts"
+      ]
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamem/scroll-parallax-effect.git"
+  },
+  "author": {
+    "name": "kamem",
+    "url": "https://github.com/kamem"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^2.5.0",
+    "autoprefixer": "^10.4.7",
+    "css-loader": "^6.7.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "postcss": "^8.4.14",
+    "postcss-loader": "^7.0.0",
+    "prettier": "^2.7.1",
+    "sass": "^1.52.3",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.9.2"
+  },
+  "scripts": {
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch",
+    "serve": "webpack serve",
+    "dev": "webpack serve",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/jest": "^28.1.2",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
+    "scroll-parallax-effect": "^0.3.1",
+    "ts-jest": "^28.0.5"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/test/**/*.test.ts"
+    ]
+  },
+  "keywords": [
+    "data",
+    "attr",
+    "plugin"
+  ]
+}
