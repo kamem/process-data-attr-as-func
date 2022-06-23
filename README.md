@@ -36,7 +36,7 @@ yarn add process-data-attr-as-func
 
 ### Typescript 
 ```typescript
-import { ProcessDataAttrAsFunc } from '../process-data-attr-as-func/index'
+import { ProcessDataAttrAsFunc } from 'process-data-attr-as-func'
 
 interface Test {
   color: string
@@ -62,7 +62,7 @@ const menu = new ProcessDataAttrAsFunc<Test>(
 ### Vanilla
 #### html
 ```html
-<script type="text/javascript" src="../js/scroll-parallax-effect.min.js"></script>
+<script src="../js/process-data-attr-as-func.min.js"></script>
 ```
 
 #### javascript
