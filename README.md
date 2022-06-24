@@ -22,7 +22,7 @@ yarn add process-data-attr-as-func
 * [es](http://github.develo.org/process-data-attr-as-func/docs/example/)
 * [vanilla](http://github.develo.org/process-data-attr-as-func/docs/example/vanilla.html)
 
-## Document and Examples
+## Document
 
 ### HTML
 ```html
@@ -88,7 +88,7 @@ export interface ProcessDataAttrAsFuncOptions<T> {
   functions?: Functions
 }
 
-## Options
+### Options
 
 | Option Name | Description | Type |default
 |:-----------|:------------|:------------|:------------|
