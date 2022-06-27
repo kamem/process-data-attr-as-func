@@ -1,6 +1,6 @@
 {
   "name": "process-data-attr-as-func",
-  "description": "process data attr as func",
+  "description": "A plugin that takes the data attribute of HTML and executes a specific function.",
   "version": "0.1.0",
   "license": "MIT",
   "main": "./dist/process-data-attr-as-func/process-data-attr-as-func.js",
