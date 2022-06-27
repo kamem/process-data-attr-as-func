@@ -82,12 +82,6 @@ const menu = new ProcessDataAttrAsFunc(
 )
 ```
 
-export interface ProcessDataAttrAsFuncOptions<T> {
-  element: Ele
-  plugin: PluginType<T>
-  functions?: Functions
-}
-
 ### Options
 
 | Option Name | Description | Type |default
