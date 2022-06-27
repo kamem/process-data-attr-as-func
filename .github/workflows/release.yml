@@ -1,0 +1,37 @@
+name: automatic release
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "!*"
+jobs:
+  tagging:
+    name: check version and tagging
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+      - name: setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '17.3.0'
+          registry-url: 'https://registry.npmjs.org'
+      - name: install can-npm-publish and dependencies
+        run: |
+          yarn add can-npm-publish
+          yarn install
+      - name: check version and add tag
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          REPO: ${{github.repository}}
+          COMMIT: ${{github.sha}}
+        run: sh ./release.sh
+      - name: test
+        run: yarn test
+      - name: build
+        run: yarn build
+      - name: release
+        run: yarn publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
