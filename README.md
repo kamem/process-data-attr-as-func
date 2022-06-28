@@ -34,6 +34,23 @@ yarn add process-data-attr-as-func
 </ul>
 ```
 
+#### dataオブジェクトの指定方法
+```html
+<p 
+  data-num="1"
+  data-str="test"
+  data-boo="true"
+  data-obj="{'test': 1}"
+  data-ary="[1, 2, 3]"
+  data-func="testFunction"
+>
+</p>
+```
+それぞれ変換`Number`, `String`, `Boolean`, `Array`, `Object`, 'Function'に変換されます。  
+**`Array`, `Object`はJSON.parse('')で変換されます。keyは`'`(シングルクオート)で囲います**。  
+**`Function`は[Optionのfunctions](#Options)もしくはGlobalにその名前の関数が存在していた場合に関数に変換されます。**
+
+
 ### Typescript 
 ```typescript
 import { ProcessDataAttrAsFunc } from 'process-data-attr-as-func'
@@ -82,12 +99,6 @@ const menu = new ProcessDataAttrAsFunc(
 )
 ```
 
-export interface ProcessDataAttrAsFuncOptions<T> {
-  element: Ele
-  plugin: PluginType<T>
-  functions?: Functions
-}
-
 ### Options
 
 | Option Name | Description | Type |default
@@ -102,6 +113,34 @@ export interface ProcessDataAttrAsFuncOptions<T> {
   element: HTMLElement
   plugin: PluginType<T>
   functions?: Functions
+}
+```
+
+## dataの変換条件
+```typescript
+#convertFromString(value: string): Value {
+  // 数値の場合
+  if(/^[+,-]?([1-9]\d*|0)(\.\d+)?$/.test(value)) {
+    return parseFloat(value)
+  }
+  // 配列 or オブジェクトの場合
+  if(/^(\[|\{)/g.test(value)) {
+    try {
+      return JSON.parse(value.replace(/\'/g,'\"'));
+    } catch(e) {
+    }
+  }
+  // Booleanの場合
+  if(value === 'true' || value === 'false') {
+    return value === 'true'
+  }
+  // 関数の場合
+  const functions = this.#functions || globalThis
+  if (typeof functions[value] === 'function') {
+    return functions[value]
+  }
+
+  return value
 }
 ```
 
